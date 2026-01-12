@@ -1,8 +1,11 @@
 import axios from 'axios'
-
+import configData from '../config.json'
 
 //const API = axios.create({ baseURL: 'http://localhost:3001'})
-const API = axios.create({ baseURL: ''})
+const API = axios.create({ 
+  baseURL: configData.API_BASE_URL,
+  withCredentials: true
+})
 
 const profile = JSON.parse(localStorage.getItem('profile'))
 
