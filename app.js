@@ -18,6 +18,7 @@ var gorupRouter = require('./routes/groupRouter')
 var expenseRouter = require('./routes/expenseRouter')
 
 var app = express()
+app.set('trust proxy', 1); // Ensure correct protocol (https) behind proxy (Render)
 app.use(cors({
   origin: ['https://splitapp-client.web.app', 'https://splitapp-client.firebaseapp.com'],
   credentials: true
