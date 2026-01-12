@@ -18,6 +18,7 @@ import Iconify from "../Iconify";
 import { login } from "../../services/auth";
 import { GoogleLogin } from "@react-oauth/google";
 import useResponsive from "../../theme/hooks/useResponsive";
+import configData from "../../config.json";
 
 // ----------------------------------------------------------------------
 
@@ -59,7 +60,7 @@ export default function LoginForm() {
 
   const handleGoogleSuccess = () => {
     // Redirect to backend Google OAuth route
-    window.location.href = "http://localhost:3001/api/users/auth/google";
+    window.location.href = `${configData.API_BASE_URL}/api/users/auth/google`;
   };
 
   const handleGoogleError = () => {
