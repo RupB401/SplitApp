@@ -24,7 +24,7 @@ router.get('/auth/google', passport.authenticate('google', {
 
 // Google OAuth callback
 router.get('/auth/google/callback', 
-    passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login' }),
+    passport.authenticate('google', { failureRedirect: process.env.FRONTEND_URL + '/login' }),
     (req, res) => {
         try {
             // Generate JWT token
@@ -45,10 +45,10 @@ router.get('/auth/google/callback',
             }
             
             // Redirect to frontend with token
-            const redirectUrl = `http://localhost:3000/login/callback?token=${token}&user=${encodeURIComponent(JSON.stringify(userData))}`
+            const redirectUrl = `${process.env.FRONTEND_URL}/login/callback?token=${token}&user=${encodeURIComponent(JSON.stringify(userData))}`
             res.redirect(redirectUrl)
         } catch (error) {
-            res.redirect('http://localhost:3000/login?error=authentication_failed')
+            res.redirect(`${process.env.FRONTEND_URL}/login?error=authentication_failed`)
         }
     }
 )
