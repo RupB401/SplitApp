@@ -18,7 +18,10 @@ var gorupRouter = require('./routes/groupRouter')
 var expenseRouter = require('./routes/expenseRouter')
 
 var app = express()
-app.use(cors())
+app.use(cors({
+  origin: ['https://splitapp-client.web.app', 'https://splitapp-client.firebaseapp.com'],
+  credentials: true
+}))
 app.use(express.json())
 
 // Session middleware
